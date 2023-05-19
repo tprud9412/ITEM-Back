@@ -1,11 +1,12 @@
 package kit.item.service.point;
 
 
-import kit.item.domain.member.Member;
 import kit.item.domain.point.PointHistory;
-import kit.item.dto.entity.member.MemberInfoDto;
 import kit.item.dto.entity.point.PointHistoryDto;
+<<<<<<< HEAD
 import kit.item.dto.request.point.RequestCreatePointHistoryDto;
+=======
+>>>>>>> parent of 871c74c (23/05/18 1차 it 기기 관리)
 import kit.item.repository.PointRepository;
 import kit.item.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,12 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PointService {
-    private final PointRepository pointRepository;
-    private final MemberRepository memberRepository;
 
+    private final PointRepository pointRepository;
     public Object getPointHistory(Long memberId) {
         log.info("PointService.getPointHistory");
         List<PointHistoryDto> pointHistoryDtos = pointRepository.findPointHistoryByMemberId(memberId);
+
         return pointHistoryDtos;
     }
 
@@ -46,6 +47,7 @@ public class PointService {
 
         return false;
     }
+<<<<<<< HEAD
 
     public boolean createHistory(Long memberId, RequestCreatePointHistoryDto requestCreatePointHistoryDto){
         log.info("PointService.createHistory");
@@ -68,4 +70,6 @@ public class PointService {
 
             return false;
     }
+=======
+>>>>>>> parent of 871c74c (23/05/18 1차 it 기기 관리)
 }

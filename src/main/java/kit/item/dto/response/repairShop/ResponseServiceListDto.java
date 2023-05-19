@@ -9,7 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class ResponseServiceDto {
+public class ResponseServiceListDto {
     private Long serviceId;
     private String serviceName;
     private String serviceType;

@@ -1,11 +1,14 @@
 package kit.item.controller;
 
 import kit.item.domain.member.Member;
+<<<<<<< HEAD
 import kit.item.dto.request.repair.RequestServiceCreateInfo;
 import kit.item.dto.request.repair.RequestServiceUpdateInfo;
+=======
+>>>>>>> parent of 871c74c (23/05/18 1차 it 기기 관리)
 import kit.item.dto.response.repairShop.ResponsePrivateRepairShopDto;
 import kit.item.dto.response.repairShop.ResponsePublicRepairShopDto;
-import kit.item.dto.response.repairShop.ResponseServiceDto;
+import kit.item.dto.response.repairShop.ResponseServiceListDto;
 import kit.item.service.repairShop.RepairShopService;
 import kit.item.util.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -33,12 +36,13 @@ public class RepairShopController {
     }
 
     @GetMapping("/serviceList")
-    public List<ResponseServiceDto> getServiceList(@RequestHeader(value = "X-AUTH-TOKEN") String accessToken){
+    public List<ResponseServiceListDto> getServiceList(@RequestHeader(value = "X-AUTH-TOKEN") String accessToken){
         Long memberId = Long.valueOf(tokenProvider.getId(tokenProvider.resolveToken(accessToken)));
 
         return repairShopService.getServiceListByShopID(memberId);
     }
 
+<<<<<<< HEAD
     @PostMapping("/serviceList")
     public boolean createServiceList(@RequestHeader(value = "X-AUTH-TOKEN") String accessToken, @RequestBody RequestServiceCreateInfo requestServiceCreateInfo){
         Long memberId = Long.valueOf(tokenProvider.getId(tokenProvider.resolveToken(accessToken)));
@@ -46,6 +50,8 @@ public class RepairShopController {
         return repairShopService.createServiceList(memberId, requestServiceCreateInfo);
     }
 
+=======
+>>>>>>> parent of 871c74c (23/05/18 1차 it 기기 관리)
     @DeleteMapping("/serviceList")
     public boolean getServiceList(@RequestHeader(value = "X-AUTH-TOKEN") String accessToken, Long serviceId){
         Long memberId = Long.valueOf(tokenProvider.getId(tokenProvider.resolveToken(accessToken)));
