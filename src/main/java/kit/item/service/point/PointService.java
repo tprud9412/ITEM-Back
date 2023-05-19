@@ -52,8 +52,10 @@ public class PointService {
 
         Optional<Member> member = memberRepository.findById(memberId);
 
+        PointHistory pointHistory = null;
+
         if(member.isPresent()){
-            PointHistory pointHistory = PointHistory.builder()
+            pointHistory = PointHistory.builder()
                     .serviceName(requestCreatePointHistoryDto.getServiceName())
                     .serviceType(requestCreatePointHistoryDto.getServiceType())
                     .point(requestCreatePointHistoryDto.getPoint())
