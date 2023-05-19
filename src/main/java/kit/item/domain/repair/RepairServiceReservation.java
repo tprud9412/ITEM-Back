@@ -1,7 +1,7 @@
 package kit.item.domain.repair;
 
 import jakarta.persistence.*;
-import kit.item.domain.it.Product;
+import kit.item.domain.it.BrandProduct;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -23,9 +23,9 @@ public class RepairServiceReservation {
     private RepairService repairService;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "brand_product_id")
     @ToString.Exclude
-    private Product product;
+    private BrandProduct brandProduct;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reservation_id")
