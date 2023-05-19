@@ -1,6 +1,5 @@
 package kit.item.dto.entity.device;
 
-import kit.item.enums.ProductType;
 import lombok.*;
 
 @Getter
@@ -12,4 +11,6 @@ import lombok.*;
 public class ProductDto {
     private Long productId;
     private String productName;
+    private boolean roleType;
+    private String kindName;
 }

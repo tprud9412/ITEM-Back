@@ -6,7 +6,6 @@ import kit.item.dto.entity.device.*;
 import kit.item.dto.request.device.RequestCreateDeviceDto;
 import kit.item.dto.request.device.RequestUpdateDeviceDto;
 import kit.item.dto.response.device.ResponseGetMyDeviceInfo;
-import kit.item.enums.ProductType;
 import kit.item.repository.it.*;
 import kit.item.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static kit.item.util.prefix.ConstPrefix.IS_COMPONENT;
 
 @Slf4j
 @Service
@@ -29,7 +25,6 @@ public class DeviceManagementService {
     private final BrandRepository brandRepository;
     private final ProductRepository productRepository;
     private final CategoryBrandRepository categoryBrandRepository;
-    private final BrandProductRepository brandProductRepository;
     private final ItDeviceRepository itDeviceRepository;
     private final MemberRepository memberRepository;
 
@@ -49,44 +44,16 @@ public class DeviceManagementService {
     public List<ProductDto> getProductList(Long categoryId, Long brandId) {
         log.info("DeviceManagementService.getProductList");
         CategoryBrandDto categoryBrands = categoryBrandRepository.findCategoryBrandByCategoryIdAndBrandId(categoryId, brandId);
-        return brandProductRepository.findProductByCategoryIdAndBrandId(categoryBrands.getCategoryId(), categoryBrands.getBrandId());
+        return productRepository.findProductByBrandId(categoryBrands.getBrandId());
     }
 
     // my device get list
     public ResponseGetMyDeviceInfo getMyDeviceList(Long memberId) {
         log.info("DeviceManagementService.getMyDeviceList");
         List<DeviceDto> computers = itDeviceRepository.findSelectDeviceByMemberId(memberId, 1L);
-        for (DeviceDto computer : computers) {
-            if (computer.getProductType().equals(ProductType.COMPONENT)) {
-                List<DeviceDto> components = itDeviceRepository.findSelectComponentByMemberIdAndComponentProductId(memberId, computer.getId());
-                computer.setComponents(components);
-            }
-            computer.setComponents(new ArrayList<>());
-        }
         List<DeviceDto> notebooks = itDeviceRepository.findSelectDeviceByMemberId(memberId, 2L);
-        for (DeviceDto notebook : notebooks) {
-            if (notebook.getProductType().equals(ProductType.COMPONENT)) {
-                List<DeviceDto> components = itDeviceRepository.findSelectComponentByMemberIdAndComponentProductId(memberId, notebook.getId());
-                notebook.setComponents(components);
-            }
-            notebook.setComponents(new ArrayList<>());
-        }
         List<DeviceDto> smartPhones = itDeviceRepository.findSelectDeviceByMemberId(memberId, 3L);
-        for (DeviceDto smartPhone : smartPhones) {
-            if(smartPhone.getProductType().equals(ProductType.COMPONENT)){
-                List<DeviceDto> components = itDeviceRepository.findSelectComponentByMemberIdAndComponentProductId(memberId, smartPhone.getId());
-                smartPhone.setComponents(components);
-            }
-            smartPhone.setComponents(new ArrayList<>());
-        }
         List<DeviceDto> tablets = itDeviceRepository.findSelectDeviceByMemberId(memberId, 4L);
-        for (DeviceDto tablet : tablets) {
-            if(tablet.getProductType().equals(ProductType.COMPONENT)){
-                List<DeviceDto> components = itDeviceRepository.findSelectComponentByMemberIdAndComponentProductId(memberId, tablet.getId());
-                tablet.setComponents(components);
-            }
-            tablet.setComponents(new ArrayList<>());
-        }
         return ResponseGetMyDeviceInfo.builder()
                 .computers(computers)
                 .notebooks(notebooks)
@@ -98,40 +65,28 @@ public class DeviceManagementService {
     // my device register
     public boolean createMyDevice(Long memberId, RequestCreateDeviceDto requestCreateDeviceDto) {
         log.info("DeviceManagementService.createMyDevice");
-        ItDevice itDevice = new ItDevice();
-
-        // member 설정
+        ItDevice itDevice = null;
         Optional<Member> member = memberRepository.findById(memberId);
         if(member.isEmpty()) {
             return false;
         }
-        itDevice.setMember(member.get());
-
-        // category 설정
-        Optional<Category> category = categoryRepository.findById(requestCreateDeviceDto.getCategoryId());
-        if (category.isEmpty()){
-            return false;
+        if(requestCreateDeviceDto.getDirectlyRegisterProductName() != null) {
+            itDevice = ItDevice.builder()
+                    .directlyRegisteredName(requestCreateDeviceDto.getDirectlyRegisterProductName())
+                    .category(categoryRepository.findById(requestCreateDeviceDto.getCategoryId()).get())
+                    .brand(brandRepository.findById(requestCreateDeviceDto.getBrandId()).get())
+                    .product(null)
+                    .member(member.get())
+                    .build();
+        }else {
+            itDevice = ItDevice.builder()
+                    .directlyRegisteredName(null)
+                    .category(categoryRepository.findById(requestCreateDeviceDto.getCategoryId()).get())
+                    .brand(brandRepository.findById(requestCreateDeviceDto.getBrandId()).get())
+                    .product(productRepository.findById(requestCreateDeviceDto.getProductId()).get())
+                    .member(member.get())
+                    .build();
         }
-        itDevice.setCategory(category.get());
-
-        // brand 설정
-        Optional<Brand> brand = brandRepository.findById(requestCreateDeviceDto.getBrandId());
-        if (brand.isEmpty()){
-            return false;
-        }
-        itDevice.setBrand(brand.get());
-
-        // 제품이름 직접 등록 설정
-        if (requestCreateDeviceDto.getDirectlyRegisterProductName() != null) {
-            itDevice.setDirectlyRegisteredName(requestCreateDeviceDto.getDirectlyRegisterProductName());
-        }else{
-            Optional<Product> product = productRepository.findById(requestCreateDeviceDto.getProductId());
-            if (product.isEmpty()){
-                return false;
-            }
-            itDevice.setProduct(product.get());
-        }
-
         itDeviceRepository.save(itDevice);
         return true;
     }
@@ -143,11 +98,10 @@ public class DeviceManagementService {
         if (itDevice.isEmpty()) {
             return false;
         }
-        if (!itDevice.get().getMember().getId().equals(memberId)) {
+        if (itDevice.get().getMember().getId() != memberId) {
             return false;
         }
         ItDevice device = itDevice.get();
-
         if(requestUpdateDeviceDto.getDirectlyRegisterProductName() != null) {
             device.setDirectlyRegisteredName(requestUpdateDeviceDto.getDirectlyRegisterProductName());
             device.setCategory(categoryRepository.findById(requestUpdateDeviceDto.getCategoryId()).get());
@@ -167,15 +121,11 @@ public class DeviceManagementService {
     public boolean deleteMyDevice(Long memberId, Long deviceId) {
         log.info("DeviceManagementService.deleteMyDevice");
         Optional<ItDevice> itDevice = itDeviceRepository.findById(deviceId);
-        if (itDevice.isEmpty()) {
+        if(itDevice.isEmpty()) {
             return false;
         }
-        if (!itDevice.get().getMember().getId().equals(memberId)) {
+        if(itDevice.get().getMember().getId() != memberId) {
             return false;
-        }
-        if (itDevice.get().getProduct().getProductType().equals(ProductType.COMPONENT)) {
-            List<ItDevice> components = itDeviceRepository.findByComponentProductId(itDevice.get().getId());
-            itDeviceRepository.deleteAll(components);
         }
         itDeviceRepository.delete(itDevice.get());
         return true;
