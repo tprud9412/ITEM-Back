@@ -7,6 +7,7 @@ VALUES ('경북 구미시 옥계2공단로 310-1', 'test3', '정비사_ID', '정
 
 INSERT INTO seller(company_address, company_name, company_number, company_phone_number, description, member_id)
 VALUES ('company_address', 'company_name', 'company_number', 'company_phone_number', 'seller description', 2);
+
 INSERT INTO repair_shop(description, shop_name, shop_phone_number, member_id, repair_service_type, shop_address)
 VALUES ('test description1', 'test shop1', '010-1234-5678', 3, 'NOTEBOOK', 'shop_address_test3');
 
@@ -174,3 +175,67 @@ INSERT INTO point_history(date, point, service_name, service_type, member_id) VA
 INSERT INTO point_history(date, point, service_name, service_type, member_id) VALUES (@now, 15000, '리뷰 추천 누적 20회', '리뷰 추천 누적', 2);
 INSERT INTO point_history(date, point, service_name, service_type, member_id) VALUES (@now, 50000, '그래픽카드 GTX1060 부품 구매', '상품 구매', 3);
 INSERT INTO point_history(date, point, service_name, service_type, member_id) VALUES (@now, 15000, '리뷰 추천 누적 20회', '리뷰 추천 누적', 3);
+
+--커뮤니티 글
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 1', '2023-01-01 00:00:00', 0, 'Title 1', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 2', '2023-01-02 00:00:00', 0, 'Title 2', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 3', '2023-01-03 00:00:00', 0, 'Title 3', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 4', '2023-01-04 00:00:00', 0, 'Title 4', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 5', '2023-01-05 00:00:00', 0, 'Title 5', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 6', '2023-01-06 00:00:00', 0, 'Title 6', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 7', '2023-01-07 00:00:00', 0, 'Title 7', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 8', '2023-01-08 00:00:00', 0, 'Title 8', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 9', '2023-01-09 00:00:00', 0, 'Title 9', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 10', '2023-01-10 00:00:00', 0, 'Title 10', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 11', '2023-01-11 00:00:00', 0, 'Title 11', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 12', '2023-01-12 00:00:00', 0, 'Title 12', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 13', '2023-01-13 00:00:00', 0, 'Title 13', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 14', '2023-01-14 00:00:00', 0, 'Title 14', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 15', '2023-01-15 00:00:00', 0, 'Title 15', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 16', '2023-01-01 00:00:00', 0, 'Title 16', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 17', '2023-01-01 00:00:00', 0, 'Title 17', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 18', '2023-01-01 00:00:00', 0, 'Title 18', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 19', '2023-01-01 00:00:00', 0, 'Title 19', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 20', '2023-01-01 00:00:00', 0, 'Title 20', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 21', '2023-01-01 00:00:00', 0, 'Title 21', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 22', '2023-01-01 00:00:00', 0, 'Title 22', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 23', '2023-01-01 00:00:00', 0, 'Title 23', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 24', '2023-01-01 00:00:00', 0, 'Title 24', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 25', '2023-01-01 00:00:00', 0, 'Title 25', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 26', '2023-01-01 00:00:00', 0, 'Title 26', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 27', '2023-01-01 00:00:00', 0, 'Title 27', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 28', '2023-01-01 00:00:00', 0, 'Title 28', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 29', '2023-01-01 00:00:00', 0, 'Title 29', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 30', '2023-01-01 00:00:00', 0, 'Title 30', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 31', '2023-01-01 00:00:00', 0, 'Title 31', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 32', '2023-01-01 00:00:00', 0, 'Title 32', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 33', '2023-01-01 00:00:00', 0, 'Title 33', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 34', '2023-01-01 00:00:00', 0, 'Title 34', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 35', '2023-01-01 00:00:00', 0, 'Title 35', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 36', '2023-01-01 00:00:00', 0, 'Title 36', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 37', '2023-01-01 00:00:00', 0, 'Title 37', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 38', '2023-01-01 00:00:00', 0, 'Title 38', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 39', '2023-01-01 00:00:00', 0, 'Title 39', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 40', '2023-01-01 00:00:00', 0, 'Title 40', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 41', '2023-01-01 00:00:00', 0, 'Title 41', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 42', '2023-01-01 00:00:00', 0, 'Title 42', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 43', '2023-01-01 00:00:00', 0, 'Title 43', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 44', '2023-01-01 00:00:00', 0, 'Title 44', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 45', '2023-01-01 00:00:00', 0, 'Title 45', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 46', '2023-01-01 00:00:00', 0, 'Title 46', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 47', '2023-01-01 00:00:00', 0, 'Title 47', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 48', '2023-01-01 00:00:00', 0, 'Title 48', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 49', '2023-01-01 00:00:00', 0, 'Title 49', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 50', '2023-01-01 00:00:00', 0, 'Title 50', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 51', '2023-01-01 00:00:00', 0, 'Title 51', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 52', '2023-01-01 00:00:00', 0, 'Title 52', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 53', '2023-01-01 00:00:00', 0, 'Title 53', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 54', '2023-01-01 00:00:00', 0, 'Title 54', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 55', '2023-01-01 00:00:00', 0, 'Title 55', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 56', '2023-01-01 00:00:00', 0, 'Title 56', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 57', '2023-01-01 00:00:00', 0, 'Title 57', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 58', '2023-01-01 00:00:00', 0, 'Title 58', 1);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 59', '2023-01-01 00:00:00', 0, 'Title 59', 2);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 60', '2023-01-01 00:00:00', 0, 'Title 60', 3);
+INSERT INTO post (content, date, report, title, member_id) VALUES ('Post content 61', '2023-01-01 00:00:00', 0, 'Title 61', 1);
+
