@@ -21,7 +21,7 @@ VALUES ('test address1', 'test0', '포인트관리_ID', '포인트관리_ID', '$
 INSERT INTO seller(company_address, company_name, company_number, company_phone_number, description, member_id)
 VALUES ('company_address', 'company_name', 'company_number', 'company_phone_number', 'seller description', 2);
 INSERT INTO repair_shop(description, shop_name, shop_phone_number, member_id, repair_service_type, shop_address)
-VALUES ('test description1', 'test shop1', '010-1234-5678', 3, 'NOTEBOOK', 'shop_address_test3');
+VALUES ('test description1', 'test shop1', '010-1234-5678', 3, '노트북', 'shop_address_test3');
 
 INSERT INTO repair_service(description, service_name, service_type, service_price, repair_shop_id)
 VALUES ('갤럭시 폰에 대한 전체적인 점검을 진행합니다.', '안드로이드 폰 점검', '점검', 25000, 3);
@@ -68,7 +68,6 @@ INSERT INTO brand(brand_name, is_finished) VALUES ('ASUS', false); #9;
 INSERT INTO brand(brand_name, is_finished) VALUES ('레노버', false); #10;
 INSERT INTO brand(brand_name, is_finished) VALUES ('애플', false); #11;
 INSERT INTO brand(brand_name, is_finished) VALUES ('샤오미', false); #12;
-
 
 # 카테고리-브랜드;
 # 컴퓨터;
@@ -173,21 +172,16 @@ INSERT INTO product(product_name, category_brand_id) VALUES ('RTX 3070', 25); # 
 INSERT INTO product(product_name, category_brand_id) VALUES ('인텔 i7', 26); # 38 / 26 인텔 cpu;
 
 # IT 기기 관리;
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 2, 1, null);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 3, 1, null);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 4, 1, null);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 1, 1, 1, 1, null);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 1, 1, 1, 1, null);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 4, 11, 34, 1, null);
---
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 5, 5, 37, 1, 4);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 6, 6, 38, 1, 4);
--- INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 5, 5, 37, 1, 5);
-
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 2, 1, null);
 INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 3, 1, null);
-INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 3, 2, 29, 1, null);
-INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 4, 11, 44, 1, null);
-INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 5, 5, 47, 1, null);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 2, 11, 4, 1, null);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 1, 1, 1, 1, null);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 1, 1, 1, 1, null);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 4, 11, 34, 1, null);
+
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 5, 5, 37, 1, 4);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 6, 6, 38, 1, 4);
+INSERT INTO it_device(directly_registered_name, category_id, brand_id, product_id, member_id, finished_it_device_id) VALUES (null, 5, 5, 37, 1, 5);
 
 # 포인트 이용내역;
 set @now = '';
