@@ -51,5 +51,5 @@ jobs:
         with:
           app-name: 'itemserverapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1CB655A59CF341C99B9F838114824833 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C4CB18C9516849729588CE216AC5F055 }}
           package: '*.jar'
