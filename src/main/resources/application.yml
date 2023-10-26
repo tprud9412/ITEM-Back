@@ -20,8 +20,8 @@ spring:
   #    driver-class-name: com.mysql.cj.jdbc.Driver
   datasource:
     url: jdbc:mysql://item-db.mysql.database.azure.com:3306/item?serverTimezone=Asia/Seoul
-    username: 'tprud9412'
-    password: '@@Sk002760'
+    username: 'root'
+    password: 'toor'
     driver-class-name: com.mysql.cj.jdbc.Driver
 #  datasource:
 #    url: jdbc:mysql://20.214.202.113:3306/item?serverTimezone=Asia/Seoul
